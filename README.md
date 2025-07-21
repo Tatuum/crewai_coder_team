@@ -1,54 +1,97 @@
 # CoderTeam Crew
 
-Welcome to the CoderTeam Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+A collaborative multi-agent AI system built with [crewAI](https://crewai.com) that designs, implements, tests, and demos Python applications from requirements. CoderTeam demonstrates how specialized AI agents can work together to deliver production-ready code with minimal human input.
 
-## Installation
+## 🚀 Features
 
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+- **Automated Design & Implementation**: Agents turn requirements into detailed designs and working Python modules
+- **Frontend Prototyping**: Generates a Gradio UI to demo the backend
+- **Automated Testing**: Produces unit tests for all generated code
+- **Seamless Workflow**: Each agent builds on the previous agent’s output
+- **Easy Customization**: Change requirements and agent roles with simple config edits
 
-First, if you haven't already, install uv:
+## 📋 Prerequisites
 
+- Python >= 3.10, < 3.14
+- [UV](https://docs.astral.sh/uv/) package manager
+- OpenAI API key
+
+## 🛠️ Installation
+
+1. **Install UV** (if not already installed):
+   ```bash
+   pip install uv
+   ```
+
+2. **Navigate to the project**:
+   ```bash
+   cd coder_team
+   ```
+
+3. **Install dependencies**:
+   ```bash
+   crewai install
+   ```
+
+4. **Set up environment variables**:
+   Create a `.env` file in the project root and add your OpenAI API key:
+   ```bash
+   OPENAI_API_KEY=your_api_key_here
+   ```
+
+## 🎯 Quick Start
+
+Run the CoderTeam crew with:
 ```bash
-pip install uv
+crewai run
+```
+This will generate a complete Python backend, Gradio UI, and unit tests for the default trading account management system.
+
+## 📁 Project Structure
+
+```
+coder_team/
+├── src/coder_team/
+│   ├── config/
+│   │   ├── agents.yaml      # Agent definitions and configurations
+│   │   └── tasks.yaml       # Task definitions and workflows
+│   ├── tools/
+│   │   └── custom_tool.py   # Custom tools for agents
+│   ├── crew.py              # Crew orchestration logic
+│   └── main.py              # Entry point and requirements
+├── output/                  # Generated code, UI, and tests
+├── knowledge/               # Knowledge base and context
+└── tests/                   # Test files
 ```
 
-Next, navigate to your project directory and install the dependencies:
+## ⚙️ Configuration
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
+### Agents (`src/coder_team/config/agents.yaml`)
+Defines the roles and goals for:
+- Engineering Lead (design)
+- Backend Engineer (implementation)
+- Frontend Engineer (UI)
+- Test Engineer (unit tests)
+
+### Tasks (`src/coder_team/config/tasks.yaml`)
+Specifies the workflow and output files for each agent.
+
+## 🔧 Customization
+
+Edit `src/coder_team/main.py` to change the requirements, module name, or class name:
+
+```python
+requirements = """Your custom requirements here..."""
+module_name = "your_module.py"
+class_name = "YourClass"
 ```
-### Customizing
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+## 📊 Example Output
 
-- Modify `src/coder_team/config/agents.yaml` to define your agents
-- Modify `src/coder_team/config/tasks.yaml` to define your tasks
-- Modify `src/coder_team/crew.py` to add your own logic, tools and specific args
-- Modify `src/coder_team/main.py` to add custom inputs for your agents and tasks
+The crew generates:
+- `output/accounts_design.md` – Technical design
+- `output/accounts.py` – Python module
+- `output/app.py` – Gradio UI
+- `output/test_accounts.py` – Unit tests
 
-## Running the Project
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
-```bash
-$ crewai run
-```
-
-This command initializes the coder_team Crew, assembling the agents and assigning them tasks as defined in your configuration.
-
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
-
-## Understanding Your Crew
-
-The coder_team Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
-
-## Support
-
-For support, questions, or feedback regarding the CoderTeam Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
